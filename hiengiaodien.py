@@ -12,8 +12,6 @@ list_of_lists = []
 D = 0
 T = 0
 randomlist = []
-ketqua = ''
-
 # ===== HÀM 1: ĐÁNH GIÁ KẾT QUẢ HỌC ======================================
 def danhgia(D, T):
     if T == 0:
@@ -42,13 +40,13 @@ def danhgia(D, T):
     return k
 
 
-# ===== HÀM 2: BẮT ĐẦU HỌC (CẬP NHẬT) ======================================
+# ===== HÀM 2: BẮT ĐẦU HỌC  ==============
 def bat_dau_hoc():
     global list_of_lists, D, T, randomlist
     try:
         a = form.lnenhapfile.text().strip()
         if a == "":
-            form.lnetienganh.setText("⚠️ Vui lòng nhập đường dẫn file Excel!")
+            form.lnetienganh.setText(" Vui lòng nhập đường dẫn file Excel!")
             return
         # Đọc dữ liệu
         DataFrame = pd.read_excel(a)
@@ -70,7 +68,7 @@ def hien_tu_hoc():
         form.lnetiengviet.setText("")  # xóa ô nhập nghĩa cũ
     else:
         # ---  KHI HỌC XONG ---
-        form.lnetienganh.setText("🎯 HOÀN THÀNH!")
+        form.lnetienganh.setText(""" HOÀN THÀNH!""")
         form.lnetiengviet.setText("Bạn đã học hết các từ trong file này!")
         k = danhgia(D, T)
         chiGoogle(k)
@@ -81,16 +79,15 @@ def kiem_tra_dap_an():
     try:
         b = form.lnetiengviet.text().strip()
         T += 1
-        if b.lower().strip() == randomlist[1].lower().strip():  # Trả lời ĐÚNG
+        if b.lower().strip() == randomlist[1].lower().strip():  # lower: viết thường, strip() bỏ khoảng trắng
             list_of_lists.remove(randomlist)
             D += 1
-            ketqua = "Đúng"
         else:  # Trả lời SAI
-            ketqua = "Sai"
             form.txtloikhuyen.setText(f" Sai rồi! Đáp án đúng là: {randomlist[1]}")
             chiGoogle(f" Sai rồi! Đáp án đúng là: {randomlist[1]}")
+            luu_tien_do_tu(randomlist[0], randomlist[1]) #sai thì mới lưu từ
         #luu tu
-        luu_tien_do_tu(randomlist[0], randomlist[1], ketqua) # randomlist[0]:tu tieng anh, randomlist[1]
+        # randomlist[0]:tu tieng anh, randomlist[1]
         form.txtlannhapdung.setText(f"{D} / {T}")
         # Cập nhật tỉ lệ
         ti_le = (D / T) * 100
@@ -100,24 +97,20 @@ def kiem_tra_dap_an():
     except Exception as e:
         form.txtloikhuyen.setText(f"Lỗi khi kiểm tra: {e}")
 # ===== HÀM 5: LƯU TIẾN ĐỘ TỪ  =================================
-def luu_tien_do_tu(tu_av, tu_tv, ketqua):
+def luu_tien_do_tu(tu_av, tu_tv):
     # 1. Tạo "dòng mới" (record) dưới dạng dictionary
-    record_moi = {
-        "TuTiengAnh": tu_av,
-        "TuTiengViet": tu_tv,
-        "KetQua": ketqua,
-    }
+    record=(tu_av, tu_tv)
 
     # 2. Tạo một danh sách rỗng để chứa tất cả dữ liệu
-    list_of_dicts = []
+    list_of_lists_on_bai = []
     try:
         # 4. Nếu CÓ: Đọc file Excel tiendo_file đã khai báo ở đầu
-        list_of_dicts = pd.read_excel(TIEN_DO_FILE).to_dict('records')
+        list_of_lists_on_bai = pd.read_excel(TIEN_DO_FILE).values.tolist()
 
         # 5. Thêm "dòng mới" (record_moi) vào cuối danh sách
-        list_of_dicts.append(record_moi)
+        list_of_lists_on_bai.append(record)
         # 6. Tạo lại 1 file excel ảo (dataframe) vừa mới cập nhật record
-        DataFrame_tiendo = pd.DataFrame(list_of_dicts)
+        DataFrame_tiendo = pd.DataFrame(list_of_lists_on_bai)
 
         # 7. Ghi đè file Excel bằng bảng tổng hợp này
         DataFrame_tiendo.to_excel(TIEN_DO_FILE, index=False)
@@ -131,21 +124,13 @@ def on_lai_tu_sai():
     global T, D, list_of_lists
     try:
         # Đọc toàn bộ file tiến độ
-        list_of_dicts = pd.read_excel(TIEN_DO_FILE).to_dict('records')
-        # Tạo list RỖNG để chứa từ sai
-        cac_tu_sai = []
-        for record in list_of_dicts:
-            if record["KetQua"] == "Sai":
-                cac_tu_sai.append([record["TuTiengAnh"], record["TuTiengViet"]])
+        list_of_lists = pd.read_excel(TIEN_DO_FILE).values.tolist()
         # --- DỌN DẸP FILE NGAY LẬP TỨC ---
         don_dep_toan_bo_file()  # Gọi hàm dọn dẹp
         # Kiểm tra xem có từ sai nào không
-        if len(cac_tu_sai) == 0:
+        if len(list_of_lists) == 0:
             form.txtloikhuyen.setText("🎉 Không còn từ sai để ôn lại!")
             return
-
-        #  Nạp danh sách từ sai vào biến global để bắt đầu học
-        list_of_lists = cac_tu_sai
         # Reset điểm và bắt đầu học
         D = 0
         T = 0
@@ -162,14 +147,13 @@ def on_lai_tu_sai():
 def don_dep_toan_bo_file():
     """
     Hàm này GHI ĐÈ file tien_do.xlsx bằng một file TRẮNG RỖNG
-    (nhưng vẫn giữ lại 3 cột tiêu đề).
     Nó sẽ xóa sạch toàn bộ lịch sử học cũ.
     """
     try:
         # 1. Tạo 1 DataFrame (bảng) rỗng với 3 cột
-        tiendo_rong = pd.DataFrame(columns=["TuTiengAnh", "TuTiengViet", "KetQua"])
+        tiendo_rong = pd.DataFrame()
 
-        # 2. Ghi đè file. File cũ sẽ bị xóa sạch nội dung.
+        # 2. Ghi đè file trống tiendo_rong. File cũ sẽ bị xóa sạch nội dung.
         tiendo_rong.to_excel(TIEN_DO_FILE, index=False)
     except Exception as e:
         form.txtloikhuyen.setText(f"Lỗi khi dọn dẹp file: {e}")
