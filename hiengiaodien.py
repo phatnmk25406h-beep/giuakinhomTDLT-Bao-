@@ -3,7 +3,7 @@ import pandas as pd
 import random
 import sys
 from PyQt6.QtWidgets import QApplication, QWidget
-from tuvung import *  # Giao diện bạn đã thiết kế sẵn bằng Qt Designer
+from tuvungqt6 import *  # Giao diện bạn đã thiết kế sẵn bằng Qt Designer
 
 # --- File dùng để lưu tiến độ học---
 TIEN_DO_FILE = "tien_do.xlsx"
@@ -13,31 +13,29 @@ T = 0
 randomlist = []
 ketqua = ''
 
-
 # ===== HÀM 1: ĐÁNH GIÁ KẾT QUẢ HỌC ======================================
 def danhgia(D, T):
     if T == 0:
         return "Chưa có dữ liệu để đánh giá."
-    ti_le_dung = D / T  # tỉ lệ đúng
-
+    ti_le_dung=round(D/T, 2) *100
     if ti_le_dung <= 0.25:
-        k = f"""Tỉ lệ đúng: {ti_le_dung:.2f}
+        k = f"""Tỉ lệ đúng: {ti_le_dung} %
           Bạn mất gốc rồi 😭 
         Ngày mai ôn lại liền nha."""
     elif ti_le_dung <= 0.5:
-        k = f"""Tỉ lệ đúng: {ti_le_dung:.2f}
+        k = f"""Tỉ lệ đúng: {ti_le_dung} %
                 Bạn thuộc ít quá 😅 
                2 ngày sau ôn lại nhé."""
     elif ti_le_dung <= 0.65:
-        k = f"""Tỉ lệ đúng: {ti_le_dung:.2f}
+        k = f"""Tỉ lệ đúng: {ti_le_dung}%
            Bạn chưa thuộc lắm 🤔 
              3 ngày sau ôn lại nhé."""
     elif ti_le_dung <= 0.8:
-        k = f"""Tỉ lệ đúng: {ti_le_dung:.2f}
+        k = f"""Tỉ lệ đúng: {ti_le_dung}%
               Tạm ổn rồi 😌 
              4 ngày sau ôn lại nhé."""
     else:
-        k = f"""Tỉ lệ đúng: {ti_le_dung:.2f}
+        k = f"""Tỉ lệ đúng: {ti_le_dung}%
             Xuất sắc 🎉 
               Tuần sau ôn lại nhé!"""
     return k
@@ -56,16 +54,13 @@ def bat_dau_hoc():
         list_of_lists = DataFrame.values.tolist()
         D = 0
         T = 0
-        form.txtlannhapsai_2.setText(f"{D} / {T}")
-        hien_tu_moi()
+        hien_tu_hoc()
     except FileNotFoundError:
         form.lnetienganh.setText("Không tìm thấy file! Hãy nhập lại chính xác nhé")
     except Exception as e:
         form.lnetienganh.setText(f"Lỗi: {e}")
-
-
 # ===== HÀM 3: HIỂN THỊ TỪ MỚI (CẬP NHẬT) ======================================
-def hien_tu_moi():
+def hien_tu_hoc():
     global list_of_lists, randomlist
     if len(list_of_lists) > 0:
         randomlist = random.choice(list_of_lists)
@@ -89,15 +84,14 @@ def kiem_tra_dap_an():
             ketqua = "Đúng"
         else:  # Trả lời SAI
             ketqua = "Sai"
-            form.txtloikhuyen.setText(f"❌ Sai rồi! Đáp án đúng là: {randomlist[1]}")
+            form.txtloikhuyen.setText(f" Sai rồi! Đáp án đúng là: {randomlist[1]}")
         #luu tu
         luu_tien_do_tu(randomlist[0], randomlist[1], ketqua) # randomlist[0]:tu tieng anh, randomlist[1]
-        # Cập nhật tiến độ
-        form.txtlannhapsai_2.setText(f"{D} / {T}")
+        # Cập nhật tỉ lệ
         ti_le = (D / T) * 100
         form.progress_tiledungsai.setValue(int(ti_le))
         # Hiện từ mới
-        hien_tu_moi()
+        hien_tu_hoc()
     except Exception as e:
         form.txtloikhuyen.setText(f"Lỗi khi kiểm tra: {e}")
 # ===== HÀM 5: LƯU TIẾN ĐỘ TỪ  =================================
@@ -131,39 +125,28 @@ def luu_tien_do_tu(tu_av, tu_tv, ketqua):
 def on_lai_tu_sai():
     global T, D, list_of_lists
     try:
-        if not os.path.exists(TIEN_DO_FILE):
-            form.txtloikhuyen.setText("⚠️ Chưa có dữ liệu để ôn lại!")
-            return
-
-        # 1. Đọc toàn bộ file tiến độ
-        DataFrame_tiendo = pd.read_excel(TIEN_DO_FILE)
-        list_of_dicts = DataFrame_tiendo.to_dict('records')
-
-        # 2. Tạo list RỖNG để chứa từ sai
+        # Đọc toàn bộ file tiến độ
+        list_of_dicts = pd.read_excel(TIEN_DO_FILE).to_dict('records')
+        # Tạo list RỖNG để chứa từ sai
         cac_tu_sai = []
         for record in list_of_dicts:
             if record["KetQua"] == "Sai":
                 cac_tu_sai.append([record["TuTiengAnh"], record["TuTiengViet"]])
-
-        # --- LOGIC MỚI: DỌN DẸP FILE NGAY LẬP TỨC ---
+        # --- DỌN DẸP FILE NGAY LẬP TỨC ---
         don_dep_toan_bo_file()  # Gọi hàm dọn dẹp
-        # --- HẾT LOGIC MỚI ---
-
-        # 4. Kiểm tra xem có từ sai nào không
+        # Kiểm tra xem có từ sai nào không
         if len(cac_tu_sai) == 0:
             form.txtloikhuyen.setText("🎉 Không còn từ sai để ôn lại!")
             return
 
-        # 5. Nạp danh sách từ sai vào biến global để bắt đầu học
+        #  Nạp danh sách từ sai vào biến global để bắt đầu học
         list_of_lists = cac_tu_sai
-
-        # 6. Reset điểm và bắt đầu học
+        # Reset điểm và bắt đầu học
         D = 0
         T = 0
         form.progress_tiledungsai.setValue(0)
-        form.txtlannhapsai_2.setText("0 / 0")
-        form.txtloikhuyen.setText("🔁 Bắt đầu ôn lại các từ sai nhé!")
-        hien_tu_moi()
+        form.txtloikhuyen.setText(" Bắt đầu ôn lại các từ sai nhé!")
+        hien_tu_hoc()
 
     except Exception as e:
         form.txtloikhuyen.setText(f"Lỗi khi ôn lại: {e}")

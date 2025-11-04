@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1338</width>
+    <height>889</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <pointsize>12</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>100</y>
+     <width>211</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng Ngoại lệ trong python:</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>180</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng gia đình :</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>230</y>
+     <width>211</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng Python:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>120</y>
+     <width>231</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng động vật:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>180</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng môi trường :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnenhapfile">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>400</y>
+     <width>371</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   } 
+QLineEdit::focus{
+   border-color: red;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="placeholderText">
+    <string>Nhập gói từ vựng bạn muốn học:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnetienganh">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>510</y>
+     <width>371</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnetiengviet">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>600</y>
+     <width>371</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   } 
+QLineEdit::focus{
+   border-color: red;
+}
+</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="placeholderText">
+    <string>Nhập đáp án của bạn</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_14">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>500</y>
+     <width>111</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiếng Anh:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_15">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>600</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tiếng Việt:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>760</y>
+     <width>171</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Phản hồi:</string>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnsubmit">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>530</y>
+     <width>261</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>17</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+   border: 1px solid black;
+   border-radius: 14px;
+   padding:2px;
+   color:white;
+   background:rgb(32, 3, 255);
+   } 
+QPushButton::focus{
+   border-color: blue;
+}</string>
+   </property>
+   <property name="text">
+    <string>Kiểm tra và học tiếp</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txtloikhuyen">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>740</y>
+     <width>361</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   } 
+QTextEdit::focus{
+   border-color: red;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>180</y>
+     <width>281</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>family.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnbatdauhoc">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>450</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+   border: 1px solid black;
+   border-radius: 14px;
+   padding:2px;
+   color:white;
+   background:rgb(32, 3, 255);
+   } 
+QPushButton::focus{
+   border-color: blue;
+}</string>
+   </property>
+   <property name="text">
+    <string>Bắt đầu học</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_2">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>120</y>
+     <width>281</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>ngoailetrongpython.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_3">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>230</y>
+     <width>281</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>python.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>230</y>
+     <width>241</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng nghề nghiệp:</string>
+   </property>
+  </widget>
+  <widget class="QProgressBar" name="progress_tiledungsai">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>682</y>
+     <width>361</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="value">
+    <number>0</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>680</y>
+     <width>151</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Tỉ lệ đúng :</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btn_hoclai">
+   <property name="geometry">
+    <rect>
+     <x>710</x>
+     <y>450</y>
+     <width>171</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+   border: 1px solid black;
+   border-radius: 14px;
+   padding:2px;
+   color:white;
+   background:rgb(32, 3, 255);
+   } 
+QPushButton::focus{
+   border-color: blue;
+}</string>
+   </property>
+   <property name="text">
+    <string>Ôn lại từ sai</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnenhapfile_2">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>30</y>
+     <width>771</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_12">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>20</y>
+     <width>611</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>ỨNG DỤNG HỌC TIẾNG ANH CƠ BẢN</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnenhapfile_3">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>100</y>
+     <width>1231</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_4">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>120</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>vocabdongvat.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_5">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>170</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>vocabmoitruong.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_6">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>230</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>vocabnghenghiep.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lnenhapfile_4">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>380</y>
+     <width>1231</width>
+     <height>461</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>290</y>
+     <width>231</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng trường học :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_7">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>290</y>
+     <width>281</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>vocabtruonghoc.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_9">
+   <property name="geometry">
+    <rect>
+     <x>730</x>
+     <y>290</y>
+     <width>211</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Gói từ vựng tính cách :</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_8">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>290</y>
+     <width>261</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QLineEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding:5px;
+   } 
+QLineEdit::focus{
+   border-color: blue;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>vocabtinhcach.xlsx</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <zorder>lnenhapfile_4</zorder>
+  <zorder>lnenhapfile_3</zorder>
+  <zorder>label</zorder>
+  <zorder>label_2</zorder>
+  <zorder>label_3</zorder>
+  <zorder>label_7</zorder>
+  <zorder>label_8</zorder>
+  <zorder>lnenhapfile</zorder>
+  <zorder>lnetienganh</zorder>
+  <zorder>lnetiengviet</zorder>
+  <zorder>label_14</zorder>
+  <zorder>label_15</zorder>
+  <zorder>label_4</zorder>
+  <zorder>btnsubmit</zorder>
+  <zorder>txtloikhuyen</zorder>
+  <zorder>lineEdit</zorder>
+  <zorder>btnbatdauhoc</zorder>
+  <zorder>lineEdit_2</zorder>
+  <zorder>lineEdit_3</zorder>
+  <zorder>label_10</zorder>
+  <zorder>progress_tiledungsai</zorder>
+  <zorder>label_5</zorder>
+  <zorder>btn_hoclai</zorder>
+  <zorder>lnenhapfile_2</zorder>
+  <zorder>label_12</zorder>
+  <zorder>lineEdit_4</zorder>
+  <zorder>lineEdit_5</zorder>
+  <zorder>lineEdit_6</zorder>
+  <zorder>label_6</zorder>
+  <zorder>lineEdit_7</zorder>
+  <zorder>label_9</zorder>
+  <zorder>lineEdit_8</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
