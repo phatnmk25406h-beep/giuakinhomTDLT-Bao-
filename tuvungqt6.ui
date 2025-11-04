@@ -391,7 +391,7 @@ QLineEdit::focus{
     <rect>
      <x>520</x>
      <y>682</y>
-     <width>361</width>
+     <width>421</width>
      <height>31</height>
     </rect>
    </property>
@@ -682,6 +682,52 @@ QLineEdit::focus{
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QLabel" name="label_11">
+   <property name="geometry">
+    <rect>
+     <x>920</x>
+     <y>640</y>
+     <width>331</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Số lần nhập đúng/ tổng lần nhập:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_13">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>560</y>
+     <width>231</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Không nhập dấu nhé hihi</string>
+   </property>
+  </widget>
+  <widget class="QTextEdit" name="txtlannhapdung">
+   <property name="geometry">
+    <rect>
+     <x>1050</x>
+     <y>680</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QTextEdit {
+   border: 1px solid black;
+   border-radius: 8px;
+   padding: 8px
+   } 
+QTextEdit::focus{
+   border-color: red;
+}</string>
+   </property>
+  </widget>
   <zorder>lnenhapfile_4</zorder>
   <zorder>lnenhapfile_3</zorder>
   <zorder>label</zorder>
@@ -714,6 +760,9 @@ QLineEdit::focus{
   <zorder>lineEdit_7</zorder>
   <zorder>label_9</zorder>
   <zorder>lineEdit_8</zorder>
+  <zorder>label_11</zorder>
+  <zorder>label_13</zorder>
+  <zorder>txtlannhapdung</zorder>
  </widget>
  <resources/>
  <connections/>

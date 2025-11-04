@@ -169,7 +169,7 @@ class Ui_Form(object):
         self.label_10.setGeometry(QtCore.QRect(730, 230, 241, 31))
         self.label_10.setObjectName("label_10")
         self.progress_tiledungsai = QtWidgets.QProgressBar(parent=Form)
-        self.progress_tiledungsai.setGeometry(QtCore.QRect(520, 682, 361, 31))
+        self.progress_tiledungsai.setGeometry(QtCore.QRect(520, 682, 421, 31))
         self.progress_tiledungsai.setProperty("value", 0)
         self.progress_tiledungsai.setObjectName("progress_tiledungsai")
         self.label_5 = QtWidgets.QLabel(parent=Form)
@@ -302,6 +302,23 @@ class Ui_Form(object):
 "")
         self.lineEdit_8.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.lineEdit_8.setObjectName("lineEdit_8")
+        self.label_11 = QtWidgets.QLabel(parent=Form)
+        self.label_11.setGeometry(QtCore.QRect(920, 640, 331, 31))
+        self.label_11.setObjectName("label_11")
+        self.label_13 = QtWidgets.QLabel(parent=Form)
+        self.label_13.setGeometry(QtCore.QRect(580, 560, 231, 31))
+        self.label_13.setObjectName("label_13")
+        self.txtlannhapdung = QtWidgets.QTextEdit(parent=Form)
+        self.txtlannhapdung.setGeometry(QtCore.QRect(1050, 680, 71, 41))
+        self.txtlannhapdung.setStyleSheet("QTextEdit {\n"
+"   border: 1px solid black;\n"
+"   border-radius: 8px;\n"
+"   padding: 8px\n"
+"   } \n"
+"QTextEdit::focus{\n"
+"   border-color: red;\n"
+"}")
+        self.txtlannhapdung.setObjectName("txtlannhapdung")
         self.lnenhapfile_4.raise_()
         self.lnenhapfile_3.raise_()
         self.label.raise_()
@@ -334,6 +351,9 @@ class Ui_Form(object):
         self.lineEdit_7.raise_()
         self.label_9.raise_()
         self.lineEdit_8.raise_()
+        self.label_11.raise_()
+        self.label_13.raise_()
+        self.txtlannhapdung.raise_()
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
@@ -367,3 +387,5 @@ class Ui_Form(object):
         self.lineEdit_7.setText(_translate("Form", "vocabtruonghoc.xlsx"))
         self.label_9.setText(_translate("Form", "Gói từ vựng tính cách :"))
         self.lineEdit_8.setText(_translate("Form", "vocabtinhcach.xlsx"))
+        self.label_11.setText(_translate("Form", "Số lần nhập đúng/ tổng lần nhập:"))
+        self.label_13.setText(_translate("Form", "Không nhập dấu nhé hihi"))

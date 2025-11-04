@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import random
 import sys
+from docchu import *
 from PyQt6.QtWidgets import QApplication, QWidget
 from tuvungqt6 import *  # Giao diện bạn đã thiết kế sẵn bằng Qt Designer
 
@@ -54,12 +55,13 @@ def bat_dau_hoc():
         list_of_lists = DataFrame.values.tolist()
         D = 0
         T = 0
+        form.txtlannhapdung.setText(f"{D} / {T}")
         hien_tu_hoc()
     except FileNotFoundError:
         form.lnetienganh.setText("Không tìm thấy file! Hãy nhập lại chính xác nhé")
     except Exception as e:
         form.lnetienganh.setText(f"Lỗi: {e}")
-# ===== HÀM 3: HIỂN THỊ TỪ MỚI (CẬP NHẬT) ======================================
+# ===== HÀM 3: HIỂN THỊ TỪ MỚI  ======================================
 def hien_tu_hoc():
     global list_of_lists, randomlist
     if len(list_of_lists) > 0:
@@ -71,7 +73,8 @@ def hien_tu_hoc():
         form.lnetienganh.setText("🎯 HOÀN THÀNH!")
         form.lnetiengviet.setText("Bạn đã học hết các từ trong file này!")
         k = danhgia(D, T)
-        form.txtloikhuyen.setText(k)  # Hiển thị đánh giá trước
+        chiGoogle(k)
+        form.txtloikhuyen.setText(k)  # Hiển thị đánh giá
 # ===== HÀM 4: KIỂM TRA ĐÁP ÁN (CẬP NHẬT) ======================================
 def kiem_tra_dap_an():
     global randomlist, D, T, list_of_lists
@@ -85,8 +88,10 @@ def kiem_tra_dap_an():
         else:  # Trả lời SAI
             ketqua = "Sai"
             form.txtloikhuyen.setText(f" Sai rồi! Đáp án đúng là: {randomlist[1]}")
+            chiGoogle(f" Sai rồi! Đáp án đúng là: {randomlist[1]}")
         #luu tu
         luu_tien_do_tu(randomlist[0], randomlist[1], ketqua) # randomlist[0]:tu tieng anh, randomlist[1]
+        form.txtlannhapdung.setText(f"{D} / {T}")
         # Cập nhật tỉ lệ
         ti_le = (D / T) * 100
         form.progress_tiledungsai.setValue(int(ti_le))
@@ -145,6 +150,7 @@ def on_lai_tu_sai():
         D = 0
         T = 0
         form.progress_tiledungsai.setValue(0)
+        form.txtlannhapdung.setText(f"{D} / {T}")
         form.txtloikhuyen.setText(" Bắt đầu ôn lại các từ sai nhé!")
         hien_tu_hoc()
 
